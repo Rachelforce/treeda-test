@@ -5313,7 +5313,7 @@ ${s.join(`
         .view-button {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center; /* изменено с flex-start на center */
           gap: 6px;
           background-color: rgba(58, 58, 58, 0.8);
           color: white;
@@ -5327,6 +5327,7 @@ ${s.join(`
           transform: translate3d(-50%, -50%, 0);
           cursor: pointer;
           max-width: 280px;
+          text-align: center; /* центрируем текст */
         }
 
         .hotspot-header {
