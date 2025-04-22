@@ -5311,24 +5311,27 @@ ${s.join(`
  * limitations under the License.
  */const S5=Rz(dz(x5(t4(mH(d5(v5(bz(ku))))))));customElements.define("model-viewer",S5);const C5=n=>{const e=oe.useRef(null),[t,i]=oe.useState([]),[r,s]=oe.useState(null),[o,a]=oe.useState(null),c=new URLSearchParams(window.location.search).get("hideInterface")==="true",{id:u}=v1(),h="https://serverstation.eto-art.ru";oe.useEffect(()=>{u&&(async()=>{var g,m;try{const v=await(await fetch(`${h}/api/models/${u}?populate[HotSpot][populate]=*`)).json();(m=(g=v.data)==null?void 0:g.attributes)!=null&&m.HotSpot?i(v.data.attributes.HotSpot):i([])}catch{i([])}})()},[u]),oe.useEffect(()=>{e.current&&(e.current.src=n.modelUrl)},[n.modelUrl]);const d=A=>{s(g=>g===A?null:A)};oe.useEffect(()=>{const A=e.current;if(!A)return;const g=p=>{var _;const v=p.currentTarget.dataset,y=(_=p.currentTarget.getAttribute("slot"))==null?void 0:_.replace("hotspot-","");y&&(d(y),y!==o&&v.orbit&&v.target&&(A.cameraOrbit=v.orbit,A.cameraTarget=v.target,A.fieldOfView="45deg",a(y)))},m=A.querySelectorAll('button[slot^="hotspot-"]');return m.forEach(p=>p.addEventListener("click",g)),()=>{m.forEach(p=>p.removeEventListener("click",g))}},[t,o]);const f=(A,g="m",m=!1)=>`${A.x}${m?"deg":g} ${A.y}${m?"deg":g} ${A.z}${m?"deg":g}`;return le.jsxs("div",{className:"h-full w-screen",children:[le.jsxs("model-viewer",{ref:e,"camera-controls":!0,"auto-rotate":!0,autoplay:!0,"environment-image":"https://modelviewer.dev/shared-assets/environments/moon_1k.hdr",exposure:"1.5","shadow-intensity":"2","shadow-softness":"0.5","render-scale":"3","max-polygons":"1000000","max-texture-size":"4096","tone-mapping":"aces","interpolation-decay":"200",ar:!0,"ar-modes":"scene-viewer webxr quick-look","skybox-height":"2m",children:[!c&&le.jsx("button",{className:"absolute bottom-32 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-fit h-12 px-4 bg-gray-200 rounded-md shadow-sm border border-gray-300 hover:bg-gray-300 transition",slot:"ar-button",id:"ar",children:"Примерить"}),t.map(A=>le.jsxs("button",{className:"view-button",slot:`hotspot-${A.id}`,"data-position":f(A.position),"data-normal":f(A.normal),"data-orbit":f(A.orbit,"",!0),"data-target":f(A.target),children:[le.jsxs("div",{className:"hotspot-header",children:[le.jsxs("svg",{width:"18",height:"18",viewBox:"0 0 24 24",fill:"white",children:[le.jsx("circle",{cx:"12",cy:"12",r:"11",stroke:"white",strokeWidth:"2",fill:"none"}),r===String(A.id)?le.jsx("line",{x1:"8",y1:"12",x2:"16",y2:"12",stroke:"white",strokeWidth:"2"}):le.jsxs(le.Fragment,{children:[le.jsx("line",{x1:"12",y1:"8",x2:"12",y2:"16",stroke:"white",strokeWidth:"2"}),le.jsx("line",{x1:"8",y1:"12",x2:"16",y2:"12",stroke:"white",strokeWidth:"2"})]})]}),le.jsx("span",{className:"hotspot-title",children:A.Name})]}),r===String(A.id)&&le.jsx("div",{className:"hotspot-description",children:A.Description})]},A.id))]}),le.jsx("style",{children:`
         .view-button {
-          display: flex;
-          flex-direction: column;
-          align-items: center; /* изменено с flex-start на center */
-          gap: 6px;
-          background-color: rgba(58, 58, 58, 0.8);
-          color: white;
-          border: none;
-          border-radius: 7px;
-          padding: 0.6em 1em;
-          font-family: 'Futura', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-          transform: translate3d(-50%, -50%, 0);
-          cursor: pointer;
-          max-width: 280px;
-          text-align: center; /* центрируем текст */
-        }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрируем */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: rgba(58, 58, 58, 0.8);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 0.6em 1em;
+  font-family: 'Futura', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  max-width: 280px;
+  z-index: 10; /* Чтобы не пряталось */
+  pointer-events: auto;
+}
 
         .hotspot-header {
           display: flex;
