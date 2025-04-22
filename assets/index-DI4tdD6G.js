@@ -5328,7 +5328,7 @@ ${s.join(`
   font-weight: 700;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  min-width: 200px;
+  min-width: 100px;
 max-width: 250px;
 width: max-content;
   z-index: 10; /* Чтобы не пряталось */
